@@ -16,9 +16,9 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        spaceship = new Spaceship(94, 20);
+        spaceship = new Spaceship(105, 60);
         camera.setToOrtho(false, RocketDemo.WIDTH / 2, RocketDemo.HEIGHT / 2);
-        background = new Texture("background.fw.png");
+        background = new Texture("background_testing.png");
     }
 
     @Override
@@ -35,6 +35,7 @@ public class PlayState extends State {
         HandleInput();
         spaceship.update(dt);
 
+
     }
 
     @Override
@@ -42,7 +43,7 @@ public class PlayState extends State {
         sb.setProjectionMatrix(camera.combined);
         sb.begin();
         sb.draw(background,0,0, RocketDemo.WIDTH/2, RocketDemo.HEIGHT/2);
-        sb.draw(spaceship.getSpaceship(), spaceship.getPosition().x, spaceship.getPosition().y, 50,50);
+        sb.draw(spaceship.getSpaceship(), spaceship.getPosition().x, spaceship.getPosition().y, 30,40);
         sb.end();
 
     }
