@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector3;
  */
 
 public class Spaceship {
-    public int gravity = 1;
+    public int gravity = 0;
     private Vector3 position;
     private Vector3 velocity;
 
@@ -22,12 +22,33 @@ public class Spaceship {
     }
 
     public void update(float dt){
-        velocity.add (0, gravity, 0);
-        velocity.scl (dt);
+        if ( position.x > -5 || position.x < 192)
+            velocity.add (gravity, 0, 0);
 
-        position.add(0, velocity.y, 0);
+        velocity.scl (dt);
+        position.add(velocity.x, 0, 0);
         velocity.scl(1 / dt);
 
+        if (position.x <-5)
+            position.x = -5;
+        if (position.x > 192)
+            position.x = 192;
+    }
+
+    public void thrust_right(){
+        velocity.x = 30;
+
+    }
+
+    public void thrust_left(){
+        velocity.x = -30;
+    }
+    public float getX(){
+        return position.x;
+    }
+
+    public float getY(){
+        return position.y;
     }
 
     public Vector3 getPosition() {

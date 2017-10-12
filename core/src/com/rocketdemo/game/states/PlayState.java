@@ -16,18 +16,23 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        spaceship = new Spaceship(92, 20);
+        spaceship = new Spaceship(94, 20);
         camera.setToOrtho(false, RocketDemo.WIDTH / 2, RocketDemo.HEIGHT / 2);
         background = new Texture("background.fw.png");
     }
 
     @Override
     protected void HandleInput() {
+        if ((Gdx.input.justTouched()) && (Gdx.input.getX() <= 240))
+            spaceship.thrust_right();
+        if ((Gdx.input.justTouched()) && (Gdx.input.getX() > 241))
+            spaceship.thrust_left();
 
     }
 
     @Override
     public void update(float dt) {
+        HandleInput();
         spaceship.update(dt);
 
     }
@@ -36,7 +41,7 @@ public class PlayState extends State {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(camera.combined);
         sb.begin();
-        sb.draw(background, camera.position.x - (camera.viewportWidth /2), 0);
+        sb.draw(background,0,0, RocketDemo.WIDTH/2, RocketDemo.HEIGHT/2);
         sb.draw(spaceship.getSpaceship(), spaceship.getPosition().x, spaceship.getPosition().y, 50,50);
         sb.end();
 
