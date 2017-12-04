@@ -33,7 +33,6 @@ public class Beam {
 
         collisionLeft = new Rectangle(gpsLeftBeam.x, gpsLeftBeam.y, leftBeam.getWidth(),leftBeam.getHeight());
         collisionRight = new Rectangle(gpsRightBeam.x, gpsRightBeam.y, rightBeam.getWidth(),rightBeam.getHeight());
-
     }
 
 
@@ -43,12 +42,12 @@ public class Beam {
 
         collisionLeft.setPosition(gpsLeftBeam.x, gpsLeftBeam.y);
         collisionRight.setPosition(gpsRightBeam.x, gpsRightBeam.y);
-
     }
 
     public boolean collision(Rectangle comet){
         return  comet.overlaps(collisionLeft) || comet.overlaps(collisionRight);
     }
+
 
 
     public Texture getLeftBeam() {
