@@ -21,8 +21,8 @@ public abstract class State {
         mouse = new Vector3();
     }
 
-    protected abstract void HandleInput();  //abstract method for handling user input
-    public abstract void update(float dt);  // refresh screen
-    public abstract void render(SpriteBatch sb); // drawing a screen. SpriteBatch - textures/coordinates
-    public abstract void dispose(); //cleaning unused resources
+    protected abstract void HandleInput();          //abstract method for handling user input
+    public abstract void update(float dt);          // refresh screen
+    public abstract void render(SpriteBatch sb);    // drawing a screen
+    public abstract void dispose();                 //cleaning unused resources
 }

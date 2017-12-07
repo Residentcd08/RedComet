@@ -28,7 +28,7 @@ public class EndCreditsState extends State {
         background = new Texture("background.fw.png");
         endCredits = new Texture("endCredits.fw.png");
         ExitBtn = new Texture("MainMenuBtn.fw.png");
-        click = Gdx.audio.newSound(Gdx.files.internal("click.wav"));
+        click = Gdx.audio.newSound(Gdx.files.internal("click.wav"));        //click sound for btn
     }
 
     @Override
@@ -39,7 +39,7 @@ public class EndCreditsState extends State {
                 && ((Gdx.input.getY() >= 610))
                 && ((Gdx.input.getY() <= 660))){
             gsm.set (new MainMenuState(gsm));
-            click.play();
+            click.play();                   //opens main menu if button pushed
         }
 
     }
@@ -54,7 +54,7 @@ public class EndCreditsState extends State {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(camera.combined);
         sb.begin();
-        sb.draw(background, 0, 0);  // RocketDemo.WIDTH, RocketDemo.HEIGHT
+        sb.draw(background, 0, 0);
         sb.draw(endCredits, camera.position.x - endCredits.getWidth()/4, camera.position.y - 30, 152, 160);
         sb.draw(ExitBtn, camera.position.x - ExitBtn.getWidth()/4, camera.position.y/2 - 30, 270/2, 50/2);
         sb.end();

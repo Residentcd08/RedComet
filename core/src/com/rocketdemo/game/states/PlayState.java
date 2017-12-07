@@ -26,18 +26,18 @@ public class PlayState extends State {
     private Texture pauseBg;
     private Texture pause;
 
-    private Texture score1;
+    private Texture score1;                     //score interface variables
     private Texture score2;
     private Texture score3;
     private Texture score4;
     private Texture score5;
     private Texture scoreBg;
 
-    private int Score = 0;
+    private int Score = 0;                      //score counter
     private static boolean switchState = false;
     private float TimeDiff = 0;
 
-    private Music rocketSound;
+    private Music rocketSound;                  //sounds
     private Sound explosion;
     private Sound click;
     private Sound beep;
@@ -52,7 +52,7 @@ public class PlayState extends State {
         pauseBg = new Texture("pauseBg.fw.png");
         pause = new Texture("pause.fw.png");
 
-        score1 = new Texture("0.fw.png");
+        score1 = new Texture("0.fw.png");           //score is 0 by default
         score2 = new Texture("0.fw.png");
         score3 = new Texture("0.fw.png");
         score4 = new Texture("0.fw.png");
@@ -60,7 +60,7 @@ public class PlayState extends State {
 
         scoreBg = new Texture("scoreBg.fw.png");
 
-        beams = new Array<Beam>();
+        beams = new Array<Beam>();                  //array for handling beams
         for (int i = 0; i < beamFalls; i++){
             beams.add(new Beam(i * (beamGap + Beam.BeamHeight)));
 
@@ -68,7 +68,7 @@ public class PlayState extends State {
 
         rocketSound = Gdx.audio.newMusic(Gdx.files.internal("rocketSound.mp3"));
         rocketSound.setLooping(true);
-        rocketSound.setVolume(0.1f);
+        rocketSound.setVolume(0.1f);                //sound of rocket engine
         rocketSound.play();
 
         explosion = Gdx.audio.newSound(Gdx.files.internal("explosion.ogg"));
@@ -320,7 +320,7 @@ public class PlayState extends State {
 
     }
 
-    public static List<Integer> ScoreNumber(int number) {
+    public static List<Integer> ScoreNumber(int number) {       //function convert number to array
 
         String n = Integer.toString(number);
         char[] charArray = n.toCharArray();
@@ -342,7 +342,6 @@ public class PlayState extends State {
         sb.draw(spaceship.getSpaceship(), spaceship.getPosition().x, spaceship.getPosition().y, 30,40);
         for (Beam beam : beams) {
             sb.draw(beam.getLeftBeam(), beam.getGpsLeftBeam().x, beam.getGpsLeftBeam().y);
-            //System.out.println(beam.getGpsLeftBeam().x);
             sb.draw(beam.getRightBeam(), beam.getGpsRightBeam().x, beam.getGpsRightBeam().y);
         }
         sb.draw(pause, camera.position.x - 105, camera.position.y + 170, 20, 20);
@@ -367,6 +366,5 @@ public class PlayState extends State {
 
     @Override
     public void dispose() {
-
     }
 }

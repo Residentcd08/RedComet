@@ -48,8 +48,6 @@ public class OverState extends State {
                 && ((Gdx.input.getY() <= 660))){
             gsm.set (new MainMenuState(gsm));
             click.play();
-//            System.out.println(Gdx.input.getX());
-//            System.out.println(Gdx.input.getY());
         }
 
     }
@@ -64,7 +62,7 @@ public class OverState extends State {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(camera.combined);
         sb.begin();
-        sb.draw(background, 0, 0);  // RocketDemo.WIDTH, RocketDemo.HEIGHT
+        sb.draw(background, 0, 0);
         sb.draw(GameOverLogo, camera.position.x - GameOverLogo.getWidth()/4, camera.position.y, 188/2, 123/2);
         sb.draw(TryAgainBtn, camera.position.x - TryAgainBtn.getWidth()/4, camera.position.y/2, 270/2, 50/2);
         sb.draw(ExitBtn, camera.position.x - ExitBtn.getWidth()/4, camera.position.y/2 - 30, 270/2, 50/2);

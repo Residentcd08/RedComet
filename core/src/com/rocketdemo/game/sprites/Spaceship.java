@@ -21,42 +21,44 @@ public class Spaceship {
     private Texture texture;
 
 
-    public Spaceship(int x, int y){
-        position = new Vector3(x, y, 0);
+    public Spaceship(int x, int y){                 //spaceship with size X/Y
+        position = new Vector3(x, y, 0);            //z = 0 because it's 2 dimension
         velocity = new Vector3(0, 0, 0);
-//        spaceship = new Texture("ship_1.png");
         texture = new Texture("ShipAnimated.fw.png");
         spaceshipAnimation = new SpaceshipAnimation(new TextureRegion(texture),3,0.5f);
-        collision = new Rectangle(x, y, 30, 30);  // spaceship collision size
+        collision = new Rectangle(x, y, 30, 30);    // spaceship collision size
     }
 
     public void update(float dt){
         spaceshipAnimation.update(dt);
         if ( position.x > 0 || position.x < 210)
-            velocity.add (gravity, 0, 0);
+            velocity.add (gravity, 0, 0);           // gravitation
 
         velocity.scl (dt);
         position.add(velocity.x, flying * dt, 0);
         velocity.scl(1 / dt);
 
-        collision.setPosition(position.x, position.y);
+        collision.setPosition(position.x, position.y);  //setting collision on top of ship
 
         if (position.x <0)
-            position.x = 0;
-        if (position.x < 105)
-            gravity = lgravity;
-        if (position.x >= 105)
-            gravity = rgravity;
+            position.x = 0;                             //stops ship X = 0
+
+        if (position.x < 105)                           //ship will be dragged left if
+            gravity = lgravity;                         //it's on left side of screen
+
+        if (position.x >= 105)                          //ship will be dragged left if
+            gravity = rgravity;                         //it's on left side of screen
+
         if (position.x > 210)
-            position.x = 210;
+            position.x = 210;                           //stops ship X = 210
     }
 
-    public void thrust_right(){
+    public void thrust_right(){                         //push ship right
         velocity.x = 50;
 
     }
 
-    public void thrust_left(){
+    public void thrust_left(){                          //push ship left
 
         velocity.x = -50;
     }
@@ -64,6 +66,7 @@ public class Spaceship {
     public Rectangle getCollision(){
         return collision;
     }
+
     public float getX(){
         return position.x;
     }
